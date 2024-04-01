@@ -38,6 +38,7 @@ class RegisterController extends GetxController {
   ) async {
     CollectionReference users = firestore.collection("Users");
     try {
+    UserCredential? myUser = await AuthC.register(email, password);
       await users.add({
         "username": username,
         "email": email,
@@ -45,7 +46,7 @@ class RegisterController extends GetxController {
       });
       Get.defaultDialog(
         title: "Berhasil",
-        middleText: "Anda telah menambahkan user baru.",
+        middleText: "Anda telah menambahkan user baru.$email",
         onConfirm: () {
           usernameC.clear();
           emailC.clear();
@@ -59,8 +60,7 @@ class RegisterController extends GetxController {
         title: "Terjadi Kesalahan",
         middleText: "Gagal menambahkan user.",
       );
-    UserCredential myUser = await AuthC.register(email, password);
-
+      print(e);
     }
 
   }

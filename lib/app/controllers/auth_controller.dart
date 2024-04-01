@@ -50,20 +50,21 @@ class AuthController extends GetxController {
     return null;
   }
 
-  register(String email, String password) async {
+  Future<UserCredential?> register(String email, String password) async {
     try {
       UserCredential myUser = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       // return myUser;
       await myUser.user!.sendEmailVerification();
-      Get.defaultDialog(
-          title: "Verification Email",
-          middleText: "Kami telah mengirimikan email verifikasi ke $email.",
-          onConfirm: () {
-            Get.back(); // close dialog
-            Get.back(); // go to login
-          },
-          textConfirm: "Ya, Saya akan cek email.");
+      return myUser;
+      // Get.defaultDialog(
+      //     title: "Verification Email",
+      //     middleText: "Kami telah mengirimikan email verifikasi ke $email.",
+      //     onConfirm: () {
+      //       Get.back(); // close dialog
+      //       Get.back(); // go to login
+      //     },
+      //     textConfirm: "Ya, Saya akan cek email.");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
         showToast(message: 'Invalid email or password.');
@@ -78,12 +79,14 @@ class AuthController extends GetxController {
           middleText: "The account already exists for that email.",
         );
       }
+      return null;
     } catch (e) {
       print(e);
       Get.defaultDialog(
         title: "Terjadi Kesalahan.",
         middleText: "Tidak dapat mendaftarkan akun ini.",
       );
+      return null;
     }
   }
 

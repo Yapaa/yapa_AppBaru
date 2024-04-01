@@ -33,7 +33,7 @@ class LoginController extends GetxController {
     String email =emailC.text;
     String password = passwordC.text;
 
-    User? user = await AuthC.login(email, password);
+    User? myUser = await AuthC.login(email, password);
 
     Map<String, String> dataToSave = {
       'email': emailC.text,
@@ -45,7 +45,7 @@ class LoginController extends GetxController {
     collectionRef.add(dataToSave);
 
     isSignIng = false; 
-    if (user!= null) {
+    if (User!= null) {
       showToast(message: "User is Succesfully Created");
       Get.toNamed(Routes.HOME);
     } else {
