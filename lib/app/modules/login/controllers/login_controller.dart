@@ -1,11 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../Utils/toast.dart';
 import '../../../controllers/auth_controller.dart';
-import '../../../routes/app_pages.dart';
 
 class LoginController extends GetxController {
 
@@ -35,21 +31,32 @@ class LoginController extends GetxController {
 
     User? myUser = await AuthC.login(email, password);
 
-    Map<String, String> dataToSave = {
-      'email': emailC.text,
-      'password': passwordC.text
-    };
-
-    CollectionReference collectionRef =
-        FirebaseFirestore.instance.collection('Users');
-    collectionRef.add(dataToSave);
-
     isSignIng = false; 
-    if (User!= null) {
-      showToast(message: "User is Succesfully Created");
-      Get.toNamed(Routes.HOME);
-    } else {
-      showToast(message: "Some error happened");
-    }
+    // if (User!= null) {
+    //   showToast(message: "User is Succesfully Created");
+    //   Get.toNamed(Routes.HOME);
+    // } else {
+    //   showToast(message: "Some error happened");
+    // }
+
+    // try {
+    // UserCredential? myUser = await AuthC.register(email, password);
+    //   Get.defaultDialog(
+    //     title: "Berhasil",
+    //     middleText: "Anda Telah berhasil login",
+    //     onConfirm: () {
+    //       emailC.clear();
+    //       passwordC.clear();
+    //       Get.back();
+    //     },
+    //     textConfirm: "OKAY",
+    //   );
+    // } catch (e) {
+    //   Get.defaultDialog(
+    //     title: "Terjadi Kesalahan",
+    //     middleText: "Gagal menambahkan user.",
+    //   );
+    //   print(e);
+    // }
   }
 }

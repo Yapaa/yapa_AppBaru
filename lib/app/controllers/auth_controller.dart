@@ -1,4 +1,5 @@
 import 'package:app_baru/app/Utils/toast.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import '../routes/app_pages.dart';
@@ -41,13 +42,14 @@ class AuthController extends GetxController {
           middleText: "An error occurred.",
         );
       }
+      return null;
     } catch (e) {
       Get.defaultDialog(
         title: "Terjadi Kesalahan.",
         middleText: "Tidak dapat login dengan akun ini.",
       );
+      return null;
     }
-    return null;
   }
 
   Future<UserCredential?> register(String email, String password) async {
@@ -87,6 +89,14 @@ class AuthController extends GetxController {
         middleText: "Tidak dapat mendaftarkan akun ini.",
       );
       return null;
+    }
+  }
+
+  Future<void> delete() async {
+    var collection = FirebaseFirestore.instance.collection('Users');
+    var snapshots = await collection.get();
+    for (var doc in snapshots.docs) {
+      await doc.reference.delete();
     }
   }
 

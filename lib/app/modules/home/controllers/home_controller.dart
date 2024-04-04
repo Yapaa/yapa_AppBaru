@@ -4,7 +4,23 @@ import 'package:get/get.dart';
 class HomeController extends GetxController {
      late Stream<QuerySnapshot> stream;
 
-}
+@override
+  void onInit() {
+    super.onInit();
+    stream = FirebaseFirestore.instance.collection('Users').snapshots();
+  }
+
+  @override
+  void onReady() {
+    super.onReady();
+  }
+
+  @override
+  void onClose() {
+    super.onClose();
+  }
+  }
+
 
 // class UserModel extends StatelessWidget{
 

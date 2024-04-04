@@ -34,8 +34,16 @@ class UserView extends GetView<UserController> {
                   itemCount: items.length,
                   itemBuilder: (BuildContext context, int index) {
                     Map thisitems = items[index];
-                    return ListTile(title: Text("${thisitems['nama']}"),
-                     subtitle: Text("${thisitems['Alamat']}"),);
+                    return ListTile(
+                      title: Text("${thisitems['nama']}"),
+                     subtitle: Text("${thisitems['Alamat']}"),
+                     trailing: Row( mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                        IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
+                        IconButton(onPressed: (){}, icon: Icon(Icons.edit))
+                      ]
+                     ),
+                     );
                   });
                   
             }
@@ -48,3 +56,39 @@ class UserView extends GetView<UserController> {
     );
   }
 }
+
+// class UserView extends StatelessWidget {
+//   const UserView({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("User"),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             Text(
+//               "No Data",
+//               style: TextStyle(
+//                 fontSize: 25,
+//               ),
+//             ),
+//             ElevatedButton(
+//               onPressed: (){
+//                 http.get(url);
+//               }, 
+//               child: Text("Refresh")
+//               ),
+//           ]
+//         ),
+//       ),
+//       // floatingActionButton: FloatingActionButton(
+//       //   onPressed: () => Get.toNamed(Routes.ADD_USER),
+//       //   child: Icon(Icons.add),
+//       // ),
+//     );
+//   }
+// }
