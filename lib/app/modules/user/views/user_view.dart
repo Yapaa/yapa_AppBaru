@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../routes/app_pages.dart';
@@ -39,7 +40,9 @@ class UserView extends GetView<UserController> {
                      subtitle: Text("${thisitems['Alamat']}"),
                      trailing: Row( mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
-                        IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
+                        IconButton(onPressed: (){
+                          // _delete(DocumentSnapshot.id);
+                        }, icon: Icon(Icons.delete)),
                         IconButton(onPressed: (){}, icon: Icon(Icons.edit))
                       ]
                      ),
@@ -56,6 +59,18 @@ class UserView extends GetView<UserController> {
     );
   }
 }
+final CollectionReference _users =
+      FirebaseFirestore.instance.collection('Users');
+
+@override
+  Future<void> _delete(String UsersID) async {
+    await _users.doc(UsersID).delete();
+    Get.defaultDialog(
+      title: "Success!!",
+      middleText: "You have successfully deleted a User",
+    );
+    
+  }
 
 // class UserView extends StatelessWidget {
 //   const UserView({super.key});

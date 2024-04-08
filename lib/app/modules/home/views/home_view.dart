@@ -29,11 +29,45 @@ class HomeView extends GetView<HomeController> {
               child: Row(
                 children: [
                   //Indicator User Account
+                  //         StreamBuilder<QuerySnapshot>(
+                  // stream: controller.stream,
+                  // builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  //   if (snapshot.hasError) {
+                  //     return Center(
+                  //       child: Text("Some error occured${snapshot.error}"),
+                  //     );
+                  //   }
+
+                  //   if (snapshot.hasData) {
+                  //     QuerySnapshot querysnapshot = snapshot.data;
+                  //     List<QueryDocumentSnapshot> document = querysnapshot.docs;
+
+                  //     List<Map> items = document.map((e) => e.data() as Map).toList();
+
+                  //     return ListView.builder(
+                  //         itemCount: 1,
+                  //         itemBuilder: (BuildContext context, int index) {
+                  //           Map thisitems = items[index];
+                  //           return ListTile(
+                  //             title: Text("${thisitems['nama']}"),
+                  //            subtitle: Text("${currentUser.currentUser!.email}"),
+                  //            trailing: Row( mainAxisSize: MainAxisSize.min,
+                  //             children: <Widget>[
+                  //               IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
+                  //               IconButton(onPressed: (){}, icon: Icon(Icons.edit))
+                  //             ]
+                  //            ),
+                  //            );
+                  //         });
+
+                  //   }
+                  //   return const Center(child: CircularProgressIndicator());
+                  // }),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Hello. Yapa!",
+                          "Hallo, Yapa!",
                           style: TextStyle(
                               color: Colors.blue,
                               fontSize: 21,
@@ -44,7 +78,7 @@ class HomeView extends GetView<HomeController> {
                           style: TextStyle(fontSize: 16),
                         ),
                       ]),
-                      //Photo User
+                  // Photo User
                   Spacer(),
                   Container(
                       width: 55.33,
@@ -102,17 +136,20 @@ class HomeView extends GetView<HomeController> {
                                         fontSize: 14, color: Colors.white),
                                   ),
                                   Text(
-                                      "${DateFormat.d().format(DateTime.now())} ",
+                                    "${DateFormat.d().format(DateTime.now())} ",
                                     style: TextStyle(
-                                        fontSize: 14, color: Colors.white),),
+                                        fontSize: 14, color: Colors.white),
+                                  ),
                                   Text(
-                                      "${DateFormat.MMMM().format(DateTime.now())} ",
+                                    "${DateFormat.MMMM().format(DateTime.now())} ",
                                     style: TextStyle(
-                                        fontSize: 14, color: Colors.white),),
+                                        fontSize: 14, color: Colors.white),
+                                  ),
                                   Text(
-                                      "${DateFormat.y().format(DateTime.now())}",
+                                    "${DateFormat.y().format(DateTime.now())}",
                                     style: TextStyle(
-                                        fontSize: 14, color: Colors.white),),
+                                        fontSize: 14, color: Colors.white),
+                                  ),
                                 ],
                               ),
                             )
@@ -223,184 +260,246 @@ class HomeView extends GetView<HomeController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(
+                        Icons.co_present,
+                        color: Colors.white,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 34.0,
+                          horizontal: 28.0,
+                        ),
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 34.0,
-                      horizontal: 39.0,
-                    ),
-                    backgroundColor: Colors.blue,
-                  ),
+                    SizedBox(height: 5),
+                    Text("Presensi",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold))
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(Icons.pending_actions, color: Colors.white),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 34.0,
+                          horizontal: 28.0,
+                        ),
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 34.0,
-                      horizontal: 39.0,
-                    ),
-                    backgroundColor: Colors.blue,
-                  ),
+                    SizedBox(height: 5),
+                    Text("Izin",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold))
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(Icons.insert_invitation_rounded,
+                          color: Colors.white),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 34.0,
+                          horizontal: 28.0,
+                        ),
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 34.0,
-                      horizontal: 39.0,
-                    ),
-                    backgroundColor: Colors.blue,
-                  ),
+                    SizedBox(height: 5),
+                    Text("Piket",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold))
+                  ],
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    "",
-                    style: TextStyle(color: Colors.white, fontSize: 18.0),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20.0),
+                Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Icon(Icons.pages, color: Colors.white),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          vertical: 34.0,
+                          horizontal: 28.0,
+                        ),
+                        backgroundColor: Colors.blue,
+                      ),
                     ),
-                    padding: EdgeInsets.symmetric(
-                      vertical: 34.0,
-                      horizontal: 39.0,
-                    ),
-                    backgroundColor: Colors.blue,
-                  ),
+                    SizedBox(height: 5),
+                    Text("Insentif",
+                        style: TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold))
+                  ],
                 ),
               ],
             ),
             //Message Option
             Container(
-              margin: EdgeInsets.only(
-                top: 33.33,
-                left: 0.0,
-                right: 375.0,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Icon(
-                Icons.message_rounded,
-                size: 30,
-                color: Colors.blue,
-              ),
-            ),
+                height: 20,
+                margin: EdgeInsets.only(top: 20, left: 0.0, bottom: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(children: [
+                  SizedBox(width: 20),
+                  Icon(
+                    Icons.message_rounded,
+                    size: 30,
+                    color: Colors.blue,
+                  ),
+                  SizedBox(width: 10),
+                  Text(
+                    "Pesan",
+                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                  ),
+                  SizedBox(width: 215),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text("Lihat Semua",
+                          style: TextStyle(fontSize: 14, color: Colors.blue)))
+                ])),
             //Thumbnail Message
             Container(
-              margin: EdgeInsets.only(top: 30),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 150.0,
+                  height: 210.0,
                   enlargeCenterPage: true,
                   autoPlay: true,
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayAnimationDuration: Duration(milliseconds: 1000),
                   viewportFraction: 0.8,
                 ),
                 items: [
                   Container(
-                    margin: EdgeInsets.all(10),
+                    height: 152.0,
+                    width: 378.0,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Text('Page 1')),
+                    child: Center(
+                        child: Text('Tidak ada pesan',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    height: 142.0,
+                    width: 398.0,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Text('Page 2')),
+                    child: Center(
+                        child: Text('Tidak ada pesan',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    height: 142.0,
+                    width: 398.0,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Text('Page 3')),
+                    child: Center(
+                        child: Text('Tidak ada pesan',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    height: 142.0,
+                    width: 398.0,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Text('Page 4')),
+                    child: Center(
+                        child: Text('Tidak ada pesan',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))),
                   ),
                   Container(
-                    margin: EdgeInsets.all(10),
+                    height: 142.0,
+                    width: 398.0,
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(20),
                     ),
-                    child: Center(child: Text('Page 5')),
-                  )
+                    child: Center(
+                        child: Text('Tidak ada pesan',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold))),
+                  ),
                 ],
               ),
             ),
             //Presensi Option
             Container(
-              height: 20,
-              margin: EdgeInsets.only(
-                  top: 33.33, left: 0.0, right: 375.0, bottom: 30),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(
-                children: [
-                  Column(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.timer_rounded,
-                        size: 30,
-                        color: Colors.blue,
-                      ),
-                      Text("Presensi")
-                    ],
+                height: 20,
+                margin: EdgeInsets.only(top: 20, left: 0.0, bottom: 20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(children: [
+                  SizedBox(width: 20),
+                  Icon(
+                    Icons.timer_rounded,
+                    size: 30,
+                    color: Colors.blue,
                   ),
-                ],
-              ),
-            ),
+                  SizedBox(width: 10),
+                  Text(
+                    "Riwayat Presensi",
+                    style: TextStyle(fontSize: 16, color: Colors.blue),
+                  ),
+                  SizedBox(width: 135),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text("Lihat Semua",
+                          style: TextStyle(fontSize: 14, color: Colors.blue)))
+                ])),
             //Thumbnail Presensi
             Container(
-              height: 142.0,
-              width: 398.0,
+              height: 152.0,
+              width: 378.0,
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Center(child: Text('Page 1')),
+              child: Center(
+                  child: Text('Tidak ada riwayat presensi',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold))),
             ),
           ],
         )),

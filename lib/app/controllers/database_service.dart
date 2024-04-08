@@ -1,17 +1,18 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:async';
 
-// const String USER_COLLECTION_REF = "user";
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 
-// class DatabaseService {
-//   final _firestore = FirebaseFirestore.instance;
+const String USER_COLLECTION_REF = "user";
 
-//   late final CollectionReference _userRef;
+class DatabaseService {
+  final _firestore = FirebaseFirestore.instance;
 
-//   DatabaseService(){
-//     _userRef = _firestore.collection(USER_COLLECTION_REF).withConverter(
-//       fromFirestore: (snapshots, _) => Users.fromJson(
-//         snapshot.data()!,
-//       ), toFirestore: toFirestore)
-//   }
+  late final CollectionReference _userRef;
 
-// }
+  DatabaseService(){
+  FirebaseDatabase.instance.setPersistenceEnabled(true);
+  FirebaseDatabase.instance.reference().keepSynced(true);
+
+}
+}

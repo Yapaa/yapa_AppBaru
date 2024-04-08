@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 class UserController extends GetxController {
    late Stream<QuerySnapshot> stream;
+   final CollectionReference _users =
+      FirebaseFirestore.instance.collection('Users');
 
 
 @override
@@ -11,10 +13,7 @@ class UserController extends GetxController {
     stream = FirebaseFirestore.instance.collection('Users').snapshots();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
+  
 
   @override
   void onClose() {
